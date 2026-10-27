@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06101d">
+<title>ULTRA JARVIS MAX</title>
+<style>
+:root{--bg:#050b14;--panel:#0b1928;--line:#22506a;--cyan:#65e8ff;--txt:#eafaff;--muted:#9ab5c5;--green:#6dffc5;--red:#ff7794}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#12334b,#050b14 58%,#02060b);color:var(--txt);font-family:system-ui,Arial,sans-serif}.wrap{max-width:760px;margin:auto;padding:18px 14px 30px}.top{display:flex;justify-content:space-between;gap:10px;color:var(--cyan);font-size:12px;letter-spacing:2px;font-weight:800}.tag{border:1px solid var(--line);border-radius:20px;padding:5px 9px;color:var(--muted);letter-spacing:0;font-weight:500}.reactor{width:130px;height:130px;border:2px solid #54dfff;border-radius:50%;margin:25px auto 15px;display:grid;place-items:center;box-shadow:0 0 25px #21bfff55,inset 0 0 25px #21bfff22;position:relative}.reactor:before{content:"";position:absolute;inset:12px;border:1px dashed #65e8ff;border-radius:50%;animation:spin 15s linear infinite}.orb{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle,#fff,#65e8ff 20%,#1479b1 60%,#06101d 75%);box-shadow:0 0 24px #65e8ff}.listening .reactor{border-color:var(--red);box-shadow:0 0 30px #ff779455}@keyframes spin{to{transform:rotate(360deg)}}h1{text-align:center;font-size:clamp(27px,7vw,38px);letter-spacing:3px;margin:0}.subtitle{text-align:center;color:var(--muted);font-size:13px;margin:5px 0 20px}.card{background:#091725ed;border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0}.label{font-size:11px;letter-spacing:1.5px;color:var(--cyan);font-weight:800;margin-bottom:11px}.status{padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#07111d;margin-bottom:12px;font-size:13px}.status strong{display:block;margin-bottom:4px}.muted{color:var(--muted);font-size:12px;line-height:1.5}.row{display:flex;gap:8px}button,input{font:inherit}button{border-radius:11px;border:1px solid #2d7898;background:#102b40;color:var(--txt);padding:12px;cursor:pointer;font-weight:700}button:active{transform:scale(.98)}button:disabled{opacity:.5}.mainbtn{width:100%;padding:16px;font-size:16px;background:linear-gradient(100deg,#087ca2,#174f91);border-color:var(--cyan)}.mainbtn.on{background:linear-gradient(100deg,#a92e50,#69274b);border-color:#ff93ab}.row input{flex:1;min-width:0;background:#030a12;border:1px solid #28516a;color:white;padding:12px;border-radius:11px}.row button{white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.grid button{text-align:left;font-size:13px}.grid small{display:block;color:var(--muted);font-weight:400;margin-top:3px}.transcript{padding:10px;background:#030a12;border:1px dashed #2c6079;border-radius:10px;min-height:42px;font-size:13px;color:var(--muted);margin-top:10px}.log{display:flex;flex-direction:column;gap:8px;max-height:230px;overflow:auto}.msg{border:1px solid #1d3d51;background:#06111c;padding:10px;border-radius:10px;font-size:13px;line-height:1.45;overflow-wrap:anywhere}.msg.user{border-color:#28799a;background:#0a2232}.who{display:block;color:var(--cyan);font-size:10px;letter-spacing:1px;margin-bottom:3px}.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+<div class="top"><span>STARK SYSTEMS</span><span class="tag">MAX / ANDROID</span></div>
+<div class="reactor"><div class="orb"></div></div>
+<h1>ULTRA JARVIS MAX</h1><div class="subtitle">Hindi + English • Voice + Text Commands</div>
+<div class="status" id="status"><strong id="stTitle">System ready</strong><span class="muted" id="stText">Pehle text command test karo. Phir mic test karo.</span></div>
+<section class="card">
+<div class="label">01 / VOICE COMMAND</div>
+<button class="mainbtn" id="talk">🎙️ START TALKING</button>
+<div class="row" style="margin-top:9px"><button id="mic" style="flex:1">MIC PERMISSION TEST</button><button id="stop" style="flex:1">STOP</button></div>
+<div class="transcript" id="transcript">Aapki pehchaani gayi awaaz yahan dikhegi.</div>
+<p class="muted">Talk button dabao, phir 1–2 second ruk kar bolo. Hindi ya English dono try kar sakte ho.</p>
+</section>
+<section class="card">
+<div class="label">02 / COMMAND TYPE KARO</div>
+<div class="row"><input id="cmd" placeholder="Example: YouTube kholo" autocomplete="off"><button id="run">RUN</button></div>
+<p class="muted">Text command se pehle test karo: <b>YouTube kholo</b></p>
+</section>
+<section class="card"><div class="label">03 / QUICK COMMANDS</div><div class="grid">
+<button data-action="youtube">▶ YouTube kholo<small>Open YouTube</small></button>
+<button data-action="google">⌕ Google kholo<small>Open Google</small></button>
+<button data-action="maps">⌖ Maps kholo<small>Open Maps</small></button>
+<button data-action="gmail">✉ Gmail kholo<small>Open Gmail</small></button>
+<button data-action="time">◷ Time batao<small>Current time</small></button>
+<button data-action="date">▦ Aaj ki date<small>Today's date</small></button>
+<button data-action="search" style="grid-column:1/-1">🔎 Google par search karo<small>Type a topic in the command box, e.g. Google par space search karo</small></button>
+</div></section>
+<section class="card"><div class="label">04 / ACTIVITY LOG</div><div class="log" id="log"><div class="msg"><span class="who">JARVIS</span>Ready. Main predefined commands chala sakta hoon; abhi full ChatGPT jaisa AI nahi hoon.</div></div></section>
+<div class="status"><strong>Important</strong><span class="muted">Agar voice error aaye, screen par uska exact reason dikhega. Downloaded HTML file mein kuch browsers voice recognition block karte hain. Links ab same tab mein khulenge taaki popup blocker command ko na roke.</span></div>
+<div class="foot">ULTRA JARVIS MAX • Browser prototype • No background listening</div>
+</div>
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let rec=null, listening=false, lastFinal='';
+function setStatus(title, text, bad=false){$('stTitle').textContent=title;$('stText').textContent=text;$('status').style.borderColor=bad?'#8b4053':'#22506a';}
+function log(who,text,user=false){const d=document.createElement('div');d.className='msg'+(user?' user':'');const a=document.createElement('span');a.className='who';a.textContent=who;const b=document.createElement('span');b.textContent=text;d.append(a,b);$('log').appendChild(d);$('log').scrollTop=$('log').scrollHeight;}
+function speak(text){log('JARVIS',text);if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='hi-IN';u.rate=.96;const vs=speechSynthesis.getVoices();u.voice=vs.find(v=>/^hi(-|_)?IN/i.test(v.lang))||vs.find(v=>/hindi/i.test(v.name))||null;speechSynthesis.speak(u);}catch(e){}}
+function norm(s){return (s||'').toLowerCase().normalize('NFKC').replace(/[.,!?।]/g,' ').replace(/\s+/g,' ').trim();}
+function has(s,words){return words.some(w=>s.includes(w));}
+function openHere(url,label){speak(label+' khol raha hoon.');setTimeout(()=>{location.href=url;},250);}
+function command(raw){
+ const c=norm(raw); if(!c){speak('Command sunai nahi di. Dobara bolo.');return;}
+ log('YOU',raw,true);
+ if(has(c,['youtube','you tube','यूट्यूब'])) return openHere('https://m.youtube.com/','YouTube');
+ if(has(c,['google kholo','google open','open google','गूगल खोलो','गूगल ओपन'])) return openHere('https://www.google.com/','Google');
+ if(has(c,['google maps','maps kholo','map kholo','open maps','मैप खोलो','मैप्स खोलो'])) return openHere('https://maps.google.com/','Google Maps');
+ if(has(c,['gmail','जीमेल'])) return openHere('https://mail.google.com/','Gmail');
+ if(has(c,['time','samay','kitne baje','टाइम','समय','कितने बजे'])) {speak('Abhi '+new Date().toLocaleTimeString('hi-IN',{hour:'numeric',minute:'2-digit'})+' baje hain.');return;}
+ if(has(c,['date','tareekh','tarikh','आज की तारीख','तारीख','डेट'])) {speak('Aaj '+new Date().toLocaleDateString('hi-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' hai.');return;}
+ if(has(c,['hello','namaste','नमस्ते','हेलो','hi jarvis'])) {speak('Namaste! Main taiyar hoon. YouTube kholo, Google kholo, Maps kholo, time batao ya Google par search karo.');return;}
+ if(has(c,['help','madad','commands','मदद','कमांड'])) {speak('Main YouTube, Google, Maps aur Gmail khol sakta hoon, time aur date bata sakta hoon, aur Google par search kar sakta hoon.');return;}
+ let q='';
+ const prefixes=['google par ','google pe ','search for ','search karo ','search ','खोजो ','गूगल पर '];
+ for(const p of prefixes){if(c.startsWith(p)){q=c.slice(p.length).replace(/\s*karo$/,'').trim();break;}}
+ if(q){if(!q){speak('Search ka topic bhi bolo ya type karo.');return;}openHere('https://www.google.com/search?q='+encodeURIComponent(q),q+' ka Google search');return;}
+ if(c==='google') return openHere('https://www.google.com/','Google');
+ speak('Yeh command samajh nahi aayi. YouTube kholo, Google kholo, Maps kholo, time batao, date batao ya Google par space search karo bolo.');
+}
+function stop(){if(rec&&listening){try{rec.stop()}catch(e){}}listening=false;$('talk').classList.remove('on');$('talk').textContent='🎙️ START TALKING';}
+function start(){
+ if(!Recognition){setStatus('Voice not supported','Is browser mein Speech Recognition support nahi hai. Text box se command chal sakti hai.',true);log('SYSTEM','SpeechRecognition API unavailable. Try updated Chrome or use text commands.');return;}
+ try{
+ if(!rec){rec=new Recognition();rec.lang='hi-IN';rec.continuous=false;rec.interimResults=true;rec.maxAlternatives=5;
+ rec.onstart=()=>{listening=true;$('talk').classList.add('on');$('talk').textContent='🔴 LISTENING…';$('transcript').textContent='Sun raha hoon… ab command bolo.';setStatus('Listening','Ab command bolo. Example: YouTube kholo.');};
+ rec.onresult=e=>{let interim='',final='';for(let i=e.resultIndex;i<e.results.length;i++){const phrase=e.results[i][0].transcript;if(e.results[i].isFinal)final+=phrase;else interim+=phrase;}if(interim)$('transcript').textContent='Sun raha hoon: '+interim;if(final.trim()){lastFinal=final.trim();$('transcript').textContent='Pehchana: '+lastFinal;setStatus('Command received',lastFinal);stop();command(lastFinal);}};
+ rec.onerror=e=>{stop();const map={'not-allowed':'Microphone permission blocked. Chrome → Site settings → Microphone → Allow.','service-not-allowed':'Browser voice service ko block kar raha hai. Text command use karo; secure HTTPS hosting/app ki zaroorat ho sakti hai.','no-speech':'Awaaz nahi mili. Dobara Talk dabao aur saaf bolo.','audio-capture':'Mic available nahi. Android mic access check karo.','network':'Internet/network error. Internet check karke dobara try karo.','aborted':'Listening cancel hui.'};const m=map[e.error]||('Voice error: '+e.error);setStatus('Voice error',m,true);$('transcript').textContent=m;log('SYSTEM',m);};
+ rec.onend=()=>{stop();if($('stTitle').textContent==='Listening')setStatus('Ready','Listening end hui. Talk dobara dabao.');};
+ }
+ if(listening){stop();return;}lastFinal='';rec.start();
+ }catch(e){stop();const m='Mic start nahi hua: '+(e.message||e.name||'unknown error')+'. Page reload karke try karo.';setStatus('Could not start',m,true);$('transcript').textContent=m;log('SYSTEM',m);}
+}
+$('talk').addEventListener('click',start);
+$('stop').addEventListener('click',()=>{stop();if('speechSynthesis'in window)speechSynthesis.cancel();setStatus('Stopped','Voice stop kar di.');});
+$('mic').addEventListener('click',()=>{if(!navigator.mediaDevices?.getUserMedia){setStatus('Mic test unavailable','Browser is file se microphone test allow nahi kar raha. Chrome permission check karo.',true);return;}navigator.mediaDevices.getUserMedia({audio:true}).then(s=>{s.getTracks().forEach(t=>t.stop());setStatus('Mic permission OK','Ab START TALKING dabao. Yaad rahe: mic permission aur speech recognition alag features hain.');}).catch(e=>{const m=e.name==='NotAllowedError'?'Microphone permission denied. Chrome app settings aur Android mic access allow karo.':'Mic error: '+e.name;setStatus('Mic test failed',m,true);});});
+function submit(){const v=$('cmd').value.trim();if(!v)return;$('cmd').value='';command(v);}
+$('run').addEventListener('click',submit);$('cmd').addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
+document.querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>{const a=b.dataset.action;if(a==='search'){$('cmd').focus();$('cmd').placeholder='Example: Google par space search karo';return;}command(a==='youtube'?'YouTube kholo':a==='google'?'Google kholo':a==='maps'?'Maps kholo':a==='gmail'?'Gmail kholo':a==='time'?'Time batao':'Aaj ki date batao');}));
+if(!Recognition)setStatus('Text mode ready','Voice API nahi mili; pehle text command try karo.',true);
+})();
+</script>
+</body>
+</html>
